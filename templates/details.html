@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+    </head>
+    <body>
+        {% block content %}
+    {% for i in Learn_more%}
+    <div class="d1">
+     <div class="left">
+        <img src="/home/media/{{i.Img}}">
+     </div>
+     <div class="right">
+        <div class="model_name">
+        <h1>{{i.model_name}}</h1>
+        <p><b>₹{{i.price}}</b></p><br>
+        </div>
+        <table>
+            <tr>
+                <td>Processor</td>
+                <td>{{i.processor}}</td>
+            </tr>
+            <tr>
+                <td>Display size</td>
+                <td>{{i.display_size}}</td>
+            </tr>
+            <tr>
+                <td>Battery Capacity</td>
+                <td>{{i.battery_capacity}}</td>
+            </tr>
+            <tr>
+                <td>RAM</td>
+                <td>{{i.RAM}}</td>
+            </tr>
+            <tr>
+                <td>Internal Storage</td>
+                <td>{{i.internal_storage }}</td>
+            </tr>
+         
+        </table>
+        {% if user.is_superuser%}
+            <div class="editdelete">
+               <a href="{% url 'update' phone_id=i.phone_id %}" style="margin-left:150px; ">Edit</a>
+               <a href="{% url 'delete' phone_id=i.phone_id %}" style="margin-left:200px; ">Delete</a>
+            </div> 
+         {% endif %}
+     </div>
+
+    </div> 
+
+     {% endfor %}
+    {% endblock %} 
+        <script src="" async defer></script>
+    </body>
+</html>

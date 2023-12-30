@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+
+{% block content %}
+<div class="result">
+    {% if results %}
+        {% for product in results %}
+            <div class="search_results">   
+                <a href="{% url 'detailpage' product.phone_id %}">
+                    <img src="/home/media/{{ product.Img }}" alt="{{ product.model_name }}">
+                    {{ product.model_name }}
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No such products found.</p>
+    {% endif %}
+</div>
+{% endblock %}
+</body>
+</html>
+

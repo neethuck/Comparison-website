@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+    {% block content %}
+
+<table>
+    <tr>
+        <td></td>
+        <td><img src="/home/media/{{product1.Img}}"><td>
+            <td><img src="/home/media/{{product2.Img}}"><td>   
+    </tr>
+    <tr>
+        <td>Product Name</td>
+        <td>{{product1.model_name}}<td>
+            <td>{{product2.model_name}}<td>   
+    </tr>
+    <tr>
+        <td>Price</td>
+        <td>{{product1.price}}<td>
+            <td>{{product2.price}}<td>   
+    </tr>
+    <tr>
+        <td>Processor</td>
+        <td>{{product1.processor}}<td>
+            <td>{{product2.processor}}<td>   
+    </tr>
+    <tr>
+        <td>Display Size </td>
+        <td>{{product1.display_size}}<td>
+            <td>{{product2.display_size}}<td>   
+    </tr>
+    <tr>
+        <td>RAM</td>
+        <td>{{product1.RAM}}<td>
+            <td>{{product2.RAM}}<td>   
+    </tr>
+    <tr>
+        <td>Internal Storage</td>
+        <td>{{product1.internal_storage}}<td>
+            <td>{{product2.internal_storage}}<td>   
+    </tr>
+    <tr>
+        <td>Battery Capacity</td>
+        <td>{{product1.battery_capacity}}<td>
+            <td>{{product2.battery_capacity}}<td>   
+    </tr>
+
+    <table>
+        <div class="difference">
+            {% if product1.price < product2.price %}
+                <p>{{ product1.model_name }} has a lower price compared to {{ product2.model_name }} by Rs {{ price_difference }}</p>
+            {% elif product2.price < product1.price %}
+                <p>{{ product2.model_name }} has a lower price compared to {{ product1.model_name }} by Rs {{ price_difference }}</p>
+            {% else %}
+                <p>Both products have the same price.</p>
+            {% endif %}
+        </div>
+    {% endblock %}
+</body>
+</html>

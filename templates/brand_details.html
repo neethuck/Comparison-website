@@ -1,0 +1,41 @@
+<!-- brand_details.html -->
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ brand_det.brand_name }} Details</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+
+<body>
+    {% block content %}
+    
+    <div class="brand-details">
+        
+        <img src="/home/media/{{ brand_det.brand_img }}" alt="{{ brand_det.brand_name }} Image">
+        <p><i>{{ brand_det.brand_name }}</i></p>
+        <div class="description">
+            <h5>{{brand_det.Description}}</h5>
+        </div>
+        <div class="brand_link">
+            
+            {% if user.is_superuser%}
+        <a href="{% url 'brand_update' brand_det.brand_id %}">Edit</a>
+            {% endif %}
+        <a href="{% url 'brand_items' brand_det.brand_id %}">View Products</a>
+        {% if user.is_superuser%}
+        <a href="{% url 'delete_brand' brand_det.brand_id %}">Delete</a>
+        {% endif %}
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

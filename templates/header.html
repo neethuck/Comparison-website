@@ -1,0 +1,75 @@
+{% load static %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button
+        data-mdb-collapse-init
+        class="navbar-toggler"
+        type="button"
+        data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Navbar brand -->
+        <a class="navbar-brand mt-2 mt-lg-0">
+          <img
+            src="{% static "img/icon.png" %}"
+            height="60"
+            alt="MDB Logo"
+            loading="lazy"
+          />
+        </a>
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if not user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login</a>
+          </li>
+        {% endif %}
+      
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Brands">Brands</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="compare">Compare</a>
+          </li>
+          {% if user.is_superuser%}
+          <li class="nav-item">
+            <a class="nav-link" href="add_products">Add Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="add_brand">Add Brand</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="user">Users</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Logout</a>
+          </li>
+          {% endif %}
+        </ul>
+      <h1>BargainBuddy</h1>
+      </div>
+      <!-- Collapsible wrapper -->
+  
+      
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->

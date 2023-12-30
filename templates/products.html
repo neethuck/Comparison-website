@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+
+{% block content %}
+<div class="image-container">
+    {% for i in product %}
+
+    <div class="name_link">   
+        <a href="{% url 'detailpage' i.phone_id %}">
+            <img src="/home/media/{{i.Img}}" alt="{{i.model_name}}">
+                <img src="{% static 'img/ordernow.png' %}" alt="Sticker Order" class="sticker">
+            
+                {% if i.is_in_stock %}
+                <img src="{% static 'img/ordernow.png' %}" alt="Sticker Order" class="sticker">
+            {% endif %}
+            
+           
+            <br><h1>{{i.model_name}}</h1>
+            <br>
+        </a>
+                
+    </div>
+
+
+    {% endfor %}
+</div>
+{% endblock %}
+</body>
+</html>

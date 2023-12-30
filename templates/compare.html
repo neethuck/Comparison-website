@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Page Title</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+</head>
+<body>
+    {% block content %}
+        <div class="comparepage">
+            <form id="comparisonForm" action="{% url 'comparison_result' %}" method="post" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <label for="productDropdown1">Select a Product 1:</label>
+                <select id="productDropdown1" name="product1" class="select2">
+                    <option value="" disabled selected>Select a Product 1</option>
+                    {% for product in products %}
+                        <option value="{{ product.phone_id }}">{{ product.model_name }}</option>
+                    {% endfor %}
+                </select>
+                
+                <select id="productDropdown2" name="product2" class="select2">
+                    <option value="" disabled selected>Select a Product 2</option>
+                    {% for product in products %}
+                        <option value="{{ product.phone_id }}">{{ product.model_name }}</option>
+                    {% endfor %}
+                </select>
+                
+
+                <button type="submit" class="comparebtn">Compare</button>
+            </form>
+        </div>
+
+        <script src="{% static "js/script.js" %}" async defer></script>
+    {% endblock %}
+</body>
+</html>
+
+

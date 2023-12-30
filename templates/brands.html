@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+    {% block content %}
+<div class="brands">
+{% for b in brand %}
+<a href="{% url 'brand_details' b.brand_id %}"><img src="/home/media/{{b.brand_img}}"></a>
+{% endfor %}
+</div>
+
+
+
+
+    {% endblock %}
+</body>
+</html>
