@@ -13,7 +13,7 @@ from django.views.generic.base import View
 
 def home(request):
     brands=Brand.objects.all()
-    return render(request,'home.html',{'brands':brands})
+    return render(request,'index.html',{'brands':brands})
 
 
 
